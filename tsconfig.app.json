@@ -1,28 +1,53 @@
 {
   "compilerOptions": {
+    // TS 增量构建信息输出位置（避免污染仓库，将缓存放到 node_modules/.tmp）
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    // 目标输出的 JS 语法版本（影响内置类型与语法可用性）
     "target": "ES2022",
+    // 使用 class fields 的定义语义（与编译产物行为一致）
     "useDefineForClassFields": true,
+    // 可用的标准库与 DOM API 类型声明集合
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    // 源码模块系统，保持为 ES 模块，交由打包器处理
     "module": "ESNext",
+    // 注入 Vite 环境类型（如 import.meta.env）
     "types": ["vite/client"],
+    // 跳过 node_modules 中 .d.ts 的类型检查，加快编译
     "skipLibCheck": true,
 
     /* Bundler mode */
+    // 采用“打包器”解析模式，尊重 ESM 条件导出与打包器行为
     "moduleResolution": "bundler",
+    // 允许导入显式的 .ts 扩展（通常不需要，但在 monorepo/特殊场景有用）
     "allowImportingTsExtensions": true,
+    // 保留 import/export 的语法，不做 downlevel 转换（交由打包器处理）
     "verbatimModuleSyntax": true,
+    // 强制按模块解析（即使文件不含 import/export），更利于按模块拆分
     "moduleDetection": "force",
+    // 不输出编译产物（仅做类型检查，由 Vite 负责产物生成）
     "noEmit": true,
+    // 使用 React 17+ 的自动 JSX 运行时
     "jsx": "react-jsx",
 
     /* Linting */
+    // 开启严格类型检查（推荐，能及早发现问题）
     "strict": true,
+    // 禁止未使用的局部变量
     "noUnusedLocals": true,
+    // 禁止未使用的函数参数
     "noUnusedParameters": true,
+    // 仅允许可“擦除”的语法（减少无意义的类型信息干扰）
     "erasableSyntaxOnly": true,
+    // switch 语句禁止隐式贯穿
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    // 禁止未检查副作用的纯导入（有助于避免意外执行）
+    "noUncheckedSideEffectImports": true,
+
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
+  // 指定 TS 参与类型检查的源文件范围
   "include": ["src"]
 }

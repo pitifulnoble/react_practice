@@ -1,26 +1,44 @@
 {
   "compilerOptions": {
+    // TS 增量构建信息输出位置（Node 侧配置缓存）
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    // 目标输出的 JS 语法版本（Node 运行时能力）
     "target": "ES2023",
+    // 可用的标准库声明集合（仅标准 JS，无 DOM）
     "lib": ["ES2023"],
+    // 源码模块系统为 ES 模块
     "module": "ESNext",
+    // 注入 Node 环境类型（如 process、__dirname 等）
     "types": ["node"],
+    // 跳过依赖声明文件检查
     "skipLibCheck": true,
 
     /* Bundler mode */
+    // 采用打包器解析模式，适配条件导出与现代解析规则
     "moduleResolution": "bundler",
+    // 允许导入显式 .ts 扩展（一般不用，保留灵活性）
     "allowImportingTsExtensions": true,
+    // 保留模块语法，不转换 import/export
     "verbatimModuleSyntax": true,
+    // 强制按模块检测
     "moduleDetection": "force",
+    // 只做类型检查，不产出文件
     "noEmit": true,
 
     /* Linting */
+    // 开启严格模式
     "strict": true,
+    // 禁止未使用的局部变量
     "noUnusedLocals": true,
+    // 禁止未使用的参数
     "noUnusedParameters": true,
+    // 仅允许可擦除语法
     "erasableSyntaxOnly": true,
+    // 禁止 switch 贯穿
     "noFallthroughCasesInSwitch": true,
+    // 禁止未检查副作用导入
     "noUncheckedSideEffectImports": true
   },
+  // 仅让 TS 处理 Vite 配置文件（Node 环境执行）
   "include": ["vite.config.ts"]
 }
