@@ -1,5 +1,5 @@
-import Login from "../views/Login/Login";
-import Error404 from "../views/404";
+import Login from "@/views/Login/Login";
+import Error404 from "@/views/404";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 
 const router = [
