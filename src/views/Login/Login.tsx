@@ -1,8 +1,13 @@
 import { Button, Form, Input } from 'antd';
+import type { Login } from '@/types/api';
+import storage from '@/utils/storage';
 import styles from './index.module.less';
-export default function Login() {
-  const onFinish = () => {
-    console.log('ok');
+import api from '@/api';
+export default function LoginFC() {
+  const onFinish = async (values: Login.params) => {
+    const data = await api.login(values);
+    storage.set('token', data);
+    console.log('data:', data);
   };
   return (
     <div className={styles.login}>

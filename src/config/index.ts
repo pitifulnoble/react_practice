@@ -13,12 +13,12 @@ type ENV = 'dev' | 'stg' | 'prd';
 //   env = 'prd'
 // }
 
-const env = (document.documentElement.dataset.env as ENV) || 'stg';
+const env = (document.documentElement.dataset.env as ENV) || 'dev';
 
 const config = {
   dev: {
     baseApi: '/api',
-    uploadApi: 'http://api-driver-dev.marsview.cc',
+    uploadApi: 'http://127.0.0.1:3001',
     cdn: 'http://xxx.aliyun.com',
     mock: false,
     mockApi: 'https://www.fastmock.site/mock/5841b82d5672783b6fd62bb2a06aeb1f/api'
