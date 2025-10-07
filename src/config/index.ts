@@ -41,5 +41,5 @@ const config = {
 
 export default {
   env,
-  ...config['prd']
+  ...config['dev']
 };
