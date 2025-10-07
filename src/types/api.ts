@@ -19,10 +19,10 @@ export interface PageParams {
   pageSize?: number;
 }
 export namespace Login {
-  export interface params {
-    userName: string;
-    userPwd: string;
-  }
+  export type params = {
+    username: string;
+    password: string;
+  };
 }
 // 用户管理
 export namespace User {
