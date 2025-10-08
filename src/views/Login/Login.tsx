@@ -1,4 +1,4 @@
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, message } from 'antd';
 import type { Login } from '@/types/api';
 import storage from '@/utils/storage';
 import styles from './index.module.less';
@@ -9,6 +9,7 @@ export default function LoginFC() {
     storage.set('token', data);
     console.log('req:', values);
     console.log('res:', data);
+    message.success('登录成功');
   };
   return (
     <div className={styles.login}>

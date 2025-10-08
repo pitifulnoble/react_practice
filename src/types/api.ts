@@ -1,10 +1,10 @@
 // 接口类型定义
 
-export interface Result<T = any> {
+export type Result<T = any> = {
   code: number;
   data: T;
   msg: string;
-}
+};
 export interface ResultData<T = any> {
   list: T[];
   page: {
