@@ -5,14 +5,13 @@ import { Breadcrumb, Layout, theme } from 'antd';
 import NavHeader from '@/components/NavHeader';
 import NavFooter from '@/components/NavFooter';
 import Menu from '@/components/Menu';
+import { Outlet } from 'react-router-dom';
+import styles from './index.module.less';
 
 const { Header, Content, Footer, Sider } = Layout;
 
 const App: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const {
-    token: { colorBgContainer, borderRadiusLG }
-  } = theme.useToken();
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -22,20 +21,12 @@ const App: React.FC = () => {
       </Sider>
       <Layout>
         <NavHeader />
-        <Content style={{ margin: '0 16px' }}>
-          <Breadcrumb style={{ margin: '16px 0' }} items={[{ title: 'User' }, { title: 'Bill' }]} />
-          <div
-            style={{
-              padding: 24,
-              minHeight: 360,
-              background: colorBgContainer,
-              borderRadius: borderRadiusLG
-            }}
-          >
-            Bill is a cat.
+        <div className={styles.content}>
+          <div className={styles.wrapper}>
+            <Outlet></Outlet>
           </div>
-        </Content>
-        <NavFooter />
+          <NavFooter />
+        </div>
       </Layout>
     </Layout>
   );
